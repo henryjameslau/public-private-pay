@@ -17,7 +17,7 @@
 			margin: 0px auto;
 		}
 		 .line-0 { stroke: #1c9bc9;  shape-rendering: crispEdges;}
-    	.line-1 { stroke: #02737d;  shape-rendering: crispEdges;}
+     .line-1 { stroke: #02737d;  shape-rendering: crispEdges;}
 
 		.border0 { border-top: 3px solid #1c9bc9; }
 		.border1 { border-top: 3px solid #02737d; }
@@ -28,57 +28,10 @@
 			opacity: .85;
 		}
 
-		#PerVal{
-			display:none;
-		}
-
-		.btn {
-			padding: 1px 6px 2px 6px;
-		}
-		.btn {
-			display: inline-block;
-			color:#fff;
-			margin-bottom: 0;
-			font-weight: normal;
-			text-align: center;
-			vertical-align: middle;
-			cursor: pointer;
-			background-color: rgb(45, 105, 118);
-			border: 1px solid transparent;
-			white-space: nowrap;
-			padding: 2px 60px;
-			font-size: 15px;
-			height: 40px;
-			border-radius: 0;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-		}
-
-		.btn:hover {
-				color:#fff;
-				opacity:0.8;
-		}
-
-		.btn:focus {
-				color:#fff;
-				opacity:1;
-		}
-
-		button{
-				margin:10px;
-		}
-
-    </style>
+		</style>
 </head>
 <body>
-	<div class= "title"><text></text></div>
-    <button id = "PerVal" class="btn"  onclick="updateData()"> Value</button>
-    <button id = "pause"  class="btn"  onclick="pause()"> Pause</button>
-  <!--  <button id = "Imp/Exp" onclick="newData()">Export</button>    -->
-
-	<div id="graphic">
+		<div id="graphic">
     	<img src="fallback.png" alt="[Chart]" />
     </div>
 
@@ -100,9 +53,6 @@
 		var footer = $(".footer");
 		var pymChild = null;
 		var animate = true;
-
-		 button = "value";
-
 
 		var color = d3.scale.ordinal()
   				  .range(["#1c9bc9","#065a61"]);
@@ -187,55 +137,15 @@
 		    //gridlines
 		     y_axis_grid = function() { return yAxis; }
 
-//		    var line = d3.svg.line()
-//		        .x(function(d) { return x(d.date); })
-//		        .y(function(d) { return y(d.amt); });
 
-//		    // parse data into columns
-//		    var lines = {};
-//		    for (var column in graphic_data[0]) {
-//		        if (column == 'date') continue;
-//		        lines[column] = graphic_data.map(function(d) {
-//		            return {
-//		                'date': d.date,
-//		                'amt': d[column]
-//		            };
-//		        });
-//		    }
+// define area generater
+         var area = d3.svg.area()
+             .x(function(d) { return x(d.date); })
+             .y1(function(d) { return y(d.Percent); });
 
-			 lines = d3.svg.area()
-				.interpolate("linear")
-				.x(function(d) { return x(d.date); })
-        .y0(function(d) { return y(d.y0 + d.y); })
-        .y1(function(d) { return y(d.y0 + d.y); });
-
-			var stack = d3.layout.stack()
-				.values(function(d) { return d.values; });
+        area.y0(y(0));
 
 
-			categories_data = stack(color.domain().map(function(name) {
-				return {
-				  name: name,
-				  values: graphic_data.map(function(d) {
-					return {date: d.date, y: d[name]/100};
-				  })
-				};
-			  }));
-
-			// categories_data2 = categories_data.filter(function(d){
-			// 	if (d.name=="Val_Ex_G_EU "|| d.name== "Val_Ex_G_Non-EU "){return d.name}
-			// })
-			//
-			// var newdata = []
-			// categories_data2.map(function(d) {
-			// 		//console.log(d3.extent(d.values, function(v) { return v.y}))
-			// 		var arr = d3.extent(d.values, function(v) { return v.y})
-			//
-			// 		newdata = d3.merge([ newdata, arr ]);
-			//
-			// })
-      //
-			// y.domain([0, d3.max(newdata, function(d) { return d; })]);
 
 
 		//	y.domain(dvc.essential.yAxisScale);
@@ -290,40 +200,11 @@
 				        .attr('transform', 'translate(0,' + height  + ')')
 				        .call(xAxis);
 
+                svg.append("path")
+                    .datum(graphic_data)
+                    .attr("fill", "steelblue")
+                    .attr("d", area);
 
-
-			svg.selectAll(".area")
-			  .data(categories_data)
-			  .enter()
-			  .append("path")
-			  .attr("class", "area")
-			  .attr("d", function(d) { 	return lines(d.values); 	})
-			  .style("stroke", function(d) { return color(d.name); })
-			  .style("fill", function(d) { return color(d.name); })
-
-//			categories.append("text")
-//			  .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-//			  .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y) + ")"; })
-//			  .attr("x", 3)
-//			  .attr("dy", ".35em")
-//			  .style("fill", function(d) { return color(d.name); })
-//			  .text(function(d) { return d.name; }); svg.append("g")
-//			  .attr("class", "x axis")
-//			  .attr("transform", "translate(0," + height + ")")
-//			  .call(xAxis);
-
-
-//				//create lines
-//			    svg.append('g').selectAll('path')
-//			        .data(d3.entries(lines))
-//			        .enter()
-//			        .append('path')
-//			            .attr('class', function(d, i) {
-//			                return 'line line-' + i;
-//			            })
-//			            .attr('d', function(d) {
-//			                return line(d.value);
-//			            });
 
 			writeAnnotation();
 
@@ -367,21 +248,7 @@
 								d3.select("#annotext0").style("opacity",0)
 								d3.select("#annotext1").style("opacity",0)
 
-							if(button == "value"){
-								d3.select("#annotext0").transition()
-										.delay(1000)
-										.duration(500)
-										.style("opacity",1)
-							} else {
-								d3.select("#annotext1").transition()
-										.delay(1000)
-										.duration(500)
-										.style("opacity",1)
-
-							}
-
-
-
+							
 							function insertLinebreaks() {
 
 								var str = this;
@@ -453,264 +320,7 @@
 		        pymChild.sendHeight();
 		    }
 
-			playPause();
-		}
-
-		function pause (){
-			animate=false;
-			d3.select("#pause").style("display", "none")
-			d3.select("#PerVal").style("display", "block")
-
-			clearInterval(loop)
-
-		}
-
-		function playPause(){
-					// play the animation
-					animate=true;
-
-				loop = setInterval(function(){
-					updateData();
-
-
-				},8000)
-					updateData();
-		}
-
-		var is_area_plot = false;
-
-
-		function updateData() {
-			console.log(button);
-
-			if(button == "value"){
-					d3.select(".title").select("text").text("Proportion of UK goods and services exported to EU and non-EU countries")
-					button = "percent";
-					categories_data2 = categories_data.filter(function(d){
-					if (d.name=="Per_Ex_G_EU "|| d.name== "Per_Ex_G_Non-EU "){return d.name}
-				})
-			} else{
-          // on = "value";
-					// d3.select(".title").select("text").text("Value of UK goods and services exported to EU and non-EU countries")
-					// categories_data2 = categories_data.filter(function(d){
-					// if (d.name=="Val_Ex_G_EU "|| d.name== "Val_Ex_G_Non-EU "){return d.name}
-				// })
-			}
-
-		//	fadeOutAnno();
-
-			formatPercent = d3.format(".");
-
-
-
-
-			var newdata = []
-			categories_data.map(function(d) {
-					//console.log(d3.extent(d.values, function(v) { return v.y}))
-					var arr = d3.extent(d.values, function(v) { return v.y})
-
-					newdata = d3.merge([ newdata, arr ]);
-
-			})
-
-
-			y = d3.scale.linear()
-		        .range([height, 0])
-				//.domain(d3.extent(newdata, function(d) { return d; }));
-
-			// if(button == "value"){
-			// 	y.domain([0,3])
-			// } else {
-				y.domain([0,1])
-			// }
-
-
-
-			yAxis = d3.svg.axis()
-		        .scale(y)
-		        .orient('left')
-				.tickFormat(function(d) { return d*100;});
-
-			d3.selectAll(".area")
-				.data(categories_data)
-				.transition()
-				.duration(1000)
-			  	.attr("d", function(d) { 	return lines(d.values); 	})
-
-			d3.select('#yAxis')
-				 		.transition()
-						.duration(1000)
-				        .call(yAxis);
-
-
-			y_axis_grid = function() { return yAxis; }
-			d3.select('.grid')
-						.transition()
-						.duration(1000)
-				        .call(y_axis_grid()
-				            .tickSize(-chart_width, 0, 0)
-				            .tickFormat("")
-				        );
-
-
-			//setTimeout(function(){ transition();},1501);
-		}
-
-		function transition() {
-
-
-			  var duration = 500;
-
-			  var areas = d3.selectAll(".area")
-			  var transition = areas.transition()
-				  .delay(function(d, i) { return i * 500; })
-				  .duration(duration);
-			//  var postTransition = transition.transition();
-			 var postTransition = transition.transition();
-
-
-
-
-
-			  if (!is_area_plot) {
-
-					d3.select("#PerVal").text("Swap to value");
-					d3.select(".unit").text("%")
-
-					d3.select(".border0").style("background","#1c9bc9")
-					d3.select(".border1").style("background","#02737d")
-					d3.select("#graphic").selectAll(".key")
-						.selectAll("b")
-						.transition().duration(200)
-						.style("margin-right","6px")
-						.style("margin-top","3px")
-						.style("margin-bottom","10px")
-						.style("width","13px")
-						.style("height","10px")
-
-
-					transition.attrTween("d", shapeTween(line_to_stacked, 100));
-
-
-//					transition.selectAll("text")
-//					  .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y) + ")"; });
-
-					postTransition.attrTween("d", shapeTween(area_to_stacked, 100))
-					  //.style("stroke-opacity", 0.0);
-
-
-					fadeInAnno();
-
-
-//					postTransition.selectAll("text")
-//					  .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y / 2) + ")"; });
-			  } else {
-				  	button1 = "Value";
-
-					d3.select(".unit").text("£ billion")
-
-					d3.select("#PerVal").text("Swap to Percent")
-
-					d3.select(".border0").style("background","none")
-					d3.select(".border1").style("background","none")
-					d3.select("#graphic").selectAll(".key")
-						.selectAll("b")
-						.transition().duration(500)
-						.style("margin-right","6px")
-						.style("margin-top","8px")
-						.style("margin-bottom","0px")
-						.style("width","35px")
-						.style("height","15px")
-
-
-
-					transition//.attrTween("d", shapeTween(area_to_stacked, 0))
-						.style("stroke-opacity", 1.0);
-
-//					transition.selectAll("text")
-//						.attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y) + ")"; });
-
-					//d3.selectAll(".area").attrTween("d", shapeTween(line_to_stacked, 0));
-
-
-//					postTransition.selectAll("text")
-//					  .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y) + ")"; });
-				fadeInAnno()
-			 }
-
-			 is_area_plot = !is_area_plot;
-		}
-
-
-
-
-
-
-		function line_to_stacked(t) {
-
-		  return d3.svg.area()
-			.interpolate("linear")
-			.x(function(d) { return x(d.date); })
-			.y0(function(d) { return y(t * d.y0 + d.y); })
-			.y1(function(d) { return y(t * d.y0 + d.y); });
-		}
-
-		function area_to_stacked(t) {
-
-		  return d3.svg.area()
-			.interpolate("linear")
-			.x(function(d) { return x(d.date); })
-			.y0(function(d) { return y(d.y0 + (1.0 - t) * d.y); })
-			.y1(function(d) { return y(d.y0 + d.y); });
-		}
-
-
-		function shapeTween(shape, direction) {
-
-			  return function(d, i, a) {
-					return function(t) {
-					  		return shape(direction ? t : 1 - t)(d.values);
-					};
-			  };
-		}
-
-
-		function fadeOutAnno() {
-
-			d3.select("#annotext0").transition().duration(500).style("opacity",0)
-			d3.select("#annotext1").transition().duration(500).style("opacity",0)
-
-		}
-
-		function fadeInAnno() {
-
-			d3.selectAll(".annotext").transition()
-					.style("fill", function(){
-						if(button =="percent"){
-							return "white";
-						} else {
-							return "#666";
-						}
-					});
-			if(button == "value"){
-				d3.select("#annotext0").transition()
-						.delay(500)
-						.duration(500)
-						.style("opacity",1)
-			} else {
-				d3.select("#annotext1").transition()
-						.delay(500)
-						.duration(500)
-						.style("opacity",1)
-
-			}
-
-
-
-		//	d3.selectAll(".backbox").transition().delay(2000).duration(1000).style("opacity",0);
-
-		}
-
+		}// end of drawGraphic
 
 
 
@@ -728,7 +338,7 @@
 
 					graphic_data.forEach(function(d) {
 						d.date = d3.time.format(dvc.essential.dateFormat).parse(d.date);
-
+            d.Percent = +d.Percent;
 					});
 
 					//use pym to create iframed chart dependent on specified variables
