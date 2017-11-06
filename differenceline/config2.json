@@ -2,11 +2,11 @@
     "essential" : {
             "graphic_data_url": "data.csv",
 
-            "dateFormat":"%Y",
+            "dateFormat":"%d/%m/%Y",
 
-            "legendLabels" : ["Unadjusted difference", "Modelled adjusted difference"],
+            "legendLabels" : ["Public sector growth", "Private sector growth"],
             "legendStyle": "line",
-            "colour_palette": [ "#274796" , "#266D4A"],
+            "colour_palette": [ "#806e71" , "#b1554e"],
 
             "sourceText":["Statistics"],
             "sourceURL":["http://www.ons.gov.uk"],
@@ -16,7 +16,7 @@
                 "xVal": "2003-06-23T00:00:00.000Z",
                 "yVal": 160,
                 "path": "",
-                "text": "T-bone hamburger swine pancetta kielbasa, ribeye boudin bresaola chicken. Flank andouille drumstick kielbasa biltong pancetta",
+                "text": "Lorem ipsum dolor sit amet, consectetur",
                 "textOffset": [0,0]
               },
 
@@ -24,7 +24,7 @@
                 "xVal": "1995-06-23T00:00:00.000Z",
                 "yVal": 120,
                 "path": "",
-                "text": "Flank andouille drumstick kielbasa biltong pancetta",
+                "text": "adipiscing elit, sed do eiusmod",
                 "textOffset": [0,0]
               },
 
@@ -32,14 +32,14 @@
                 "xVal": "2011-06-01T00:00:00.000Z",
                 "yVal": 60,
                 "path": "",
-                "text": "Versicolor",
+                "text": "incididunt ut labore et dolor",
                 "textOffset": [0,0]
               }
             ],
 
             "wordwrap":[30,20,10],
             "annoAlign": ["middle","middle","end"],
-            "annotationBullet" : ["Some other annotation","Some more annotation"],
+            "annotationBullet" : ["An annotation","Another annotation"],
 
             "circles" : true,
             "annotationCXCY":[
@@ -48,15 +48,15 @@
             ],
 
             "yAxisLabel":"%",
-            "yAxisScale":[-0.04,0.2],
+            "yAxisScale":"auto_min_max",
             "yAxisBreak": false,
             "yAxisBreak_sm_md_lg": [65,65,65]
     },
 
     "optional" : {
-            "margin_sm": [50, 10, 70, 40],
-            "margin_md": [50, 10, 70, 40],
-            "margin_lg": [50, 10, 70, 40],
+            "margin_sm": [50, 10, 70, 30],
+            "margin_md": [50, 10, 70, 30],
+            "margin_lg": [50, 10, 70, 30],
 
             "aspectRatio_sm" : [16,13],
             "aspectRatio_md" : [16,12],
@@ -67,7 +67,7 @@
             "xAxisTextFormat_sm_md_lg" : ["%y", "%Y", "%Y"],
 
             "x_num_ticks_sm_md_lg" : [6,12,12],
-            "y_num_ticks_sm_md_lg" : [5,11,11],
+            "y_num_ticks_sm_md_lg" : [5,5,5],
 
             "lineMarkers" : false,
 

@@ -11,7 +11,32 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
     <link rel="stylesheet" href="../lib/globalStyle.css" />
+    <style>
+    .area.above {
+      fill: #5f7682;
+      opacity:0.3;
+    }
 
+    .area.below {
+      fill: #d32f2f;
+      opacity: 0.3;
+    }
+
+    .line {
+      fill: none;
+      stroke: #806e71;
+      stroke-width: 3px;
+      stroke-opacity:0.5;
+
+    }
+
+    .line2 {
+      fill: none;
+      stroke: #b1554e;
+      stroke-width: 3px;
+
+    }
+</style>
 </head>
 
 
@@ -342,20 +367,70 @@
 				}
 
 
-				//create lines
-			    svg.append('g').selectAll('path')
-			        .data(d3.entries(lines))
-			        .enter()
-			        .append('path')
-			            //.attr('class', 'line')
-						.style("stroke", function(d,i){ return dvc.essential.colour_palette[i]; })
-						.style("fill", 'none')
-						.style("stroke-width", 3)
-						.style("stroke-linecap", 'round')
-						.style("stroke-linejoin", 'round')
-			            .attr('d', function(d) {
-			                return line(d.value);
-			            });
+				//create converters
+        var line = d3.area()
+            .curve(d3.curveBasis)
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d["Public"]); });
+
+        var line2 = d3.area()
+                .curve(d3.curveBasis)
+                .x(function(d) { return x(d.date); })
+                .y(function(d) { return y(d["Private"]); });
+
+        var area = d3.area()
+            .curve(d3.curveBasis)
+            .x(function(d) { return x(d.date); })
+            .y1(function(d) { return y(d["Public"]); });
+
+            svg.datum(graphic_data);
+
+              svg.append("clipPath")
+                  .attr("id", "clip-below")
+                .append("path")
+                  .attr("d", area.y0(height));
+
+              svg.append("clipPath")
+                  .attr("id", "clip-above")
+                .append("path")
+                  .attr("d", area.y0(0));
+
+              svg.append("path")
+                  .attr("class", "area above")
+                  .attr("clip-path", "url(#clip-above)")
+                  .attr("d", area.y0(function(d) { return y(d["Private"]); }));
+
+              svg.append("path")
+                  .attr("class", "area below")
+                  .attr("clip-path", "url(#clip-below)")
+                  .attr("d", area);
+
+              svg.append("path")
+                  .attr("class", "line")
+                  .attr("d", line);
+
+              svg.append("path")
+                  .attr("class", "line2")
+                  .attr("d", line2);
+
+
+
+          //
+          // // //create lines
+  			  //    svg.append('g').selectAll('path')
+  			  //        .data(d3.entries(lines))
+  			  //        //.enter()
+  			  //        .append('path')
+					// 	.style("stroke", function(d,i){ return dvc.essential.colour_palette[i]; })
+					// 	.style("fill", 'none')
+					// 	.style("stroke-width", 3)
+					// 	.style("stroke-linecap", 'round')
+					// 	.style("stroke-linejoin", 'round')
+			    //         .attr('d', function(d) {
+			    //             return line(d.value);
+			    //         });
+
+
 
 				// add markers
 				if (parseInt(graphic.style("width")) > threshold_sm && dvc.optional.lineMarkers == true){
@@ -613,7 +688,7 @@ function createLegend(){
 	//check whether browser can cope with svg
 		if (Modernizr.svg) {
 		   //load config
-			d3.json("config.json", function(error, config) {
+			d3.json("config2.json", function(error, config) {
 			dvc=config
 
 				//load chart data
@@ -622,7 +697,9 @@ function createLegend(){
 
 					graphic_data.forEach(function(d) {
 						d.date = d3.timeParse(dvc.essential.dateFormat)(d.date);
-
+            d["Public"]=+d["Public"];
+            d["Private"]=+d["Private"];
+            d["CIPH"]=+d["CIPH"];
 					});
 
 					//use pym to create iframed chart dependent on specified variables

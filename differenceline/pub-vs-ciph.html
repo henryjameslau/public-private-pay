@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="../lib/globalStyle.css" />
     <style>
     .area.above {
-      fill: #5f7682;
-      opacity:0.3;
+      fill: #a4b0b8;
     }
 
     .area.below {
-      fill: #d32f2f;
-      opacity: 0.3;
+      fill: #f8a89c;
+
     }
 
     .line {
@@ -376,7 +375,7 @@
         var line2 = d3.area()
                 .curve(d3.curveBasis)
                 .x(function(d) { return x(d.date); })
-                .y(function(d) { return y(d["Private"]); });
+                .y(function(d) { return y(d["Public"]); });
 
         var area = d3.area()
             .curve(d3.curveBasis)
@@ -398,7 +397,7 @@
               svg.append("path")
                   .attr("class", "area above")
                   .attr("clip-path", "url(#clip-above)")
-                  .attr("d", area.y0(function(d) { return y(d["Private"]); }));
+                  .attr("d", area.y0(function(d) { return y(d["Public"]); }));
 
               svg.append("path")
                   .attr("class", "area below")
@@ -466,7 +465,7 @@
 						.attr("text-anchor", "start")
 						.style("font-size", "12px")
 						.style("fill", "#666")
-						.attr('y',height + margin.top + margin.bottom-10)
+						.attr('y',height + margin.top + margin.bottom)
 						.attr('x',0)
 						//.style('margin-bottom', '10px')
 						.text("Source: ")
