@@ -242,16 +242,23 @@
 						.attr("width", chart_width)
 						.attr("height", height);
 
-				    svg.append('g')
-				        .attr('class', 'y axis')
-				        .call(yAxis);
+				    // svg.append('g')
+				    //     .attr('class', 'y axis')
+				    //     .call(yAxis)
+            //     .tickFormat(d3.format(".0%"));
+            //
+				    // svg.append('g')
+				    //     .attr('class', 'y grid')
+				    //     .call(y_axis_grid()
+				    //         .tickSize(-chart_width, 0, 0)
+				    //         //.tickFormat(d3.format(".0%"))
+				    //     );
 
-				    svg.append('g')
-				        .attr('class', 'y grid')
-				        .call(y_axis_grid()
-				            .tickSize(-chart_width, 0, 0)
-				            .tickFormat('')
-				        );
+            svg.append("g")
+              .attr("class", "y axis")
+              .call(d3.axisLeft(y)
+                  //.ticks(20)
+                  .tickFormat(d3.format(".0%")));
 
 					//y axis label
 						 svg.append("text")
@@ -379,27 +386,27 @@
 
         var area2 = d3.area()
             .x(function(d) { return x(d.date); })
-            .y1(y(100))
+            .y1(y(1))
             .y0(function(d) { return y(d.Percent); });
 
-
+        // draw the areas and paths
         svg.append("path")
         .datum(graphic_data)
         .attr("class","bottomArea")
-        .style("fill","steelblue")
+        .style("fill","#0075A3")
         .attr("d", area);
 
         svg.append("path")
             .datum(graphic_data)
             .attr("class", "thisLine")
-            .attr("stroke","#806e71")
-            .attr("stroke-width","3px")
+            .attr("stroke","#5F7682")
+            .attr("stroke-width","5px")
             .attr("d", line);
 
         svg.append("path")
         .datum(graphic_data)
         .attr("class","topArea")
-        .style("fill","yellow")
+        .style("fill","#36ADD9")
         .attr("d", area2);
 
 				// add markers

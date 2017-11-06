@@ -4,17 +4,45 @@
 
             "dateFormat":"%Y",
 
-            "legendLabels" : ["CIPH", "Private sector pay"],
-            "legendStyle": "line",
-            "colour_palette": [ "#806e71" , "b1554e"],
+            "legendLabels" : ["Lower skilled workers", "Upper skilled workers"],
+            "legendStyle": "rect",
+            "colour_palette": [ "#0075A3" , "#36ADD9"],
 
             "sourceText":["Statistics"],
             "sourceURL":["http://www.ons.gov.uk"],
-            "draggable": true,
-           "annotationsChart" : [],
+            "draggable": false,
+           "annotationsChart" : [
 
+             {
+               "xVal": "1998-01-01T00:00:00.000Z",
+               "yVal": 0.7,
+               "path": "",
+               "text": "53%",
+               "textOffset": [0,0]
+             },
+             {
+               "xVal": "1998-01-01T00:00:00.000Z",
+               "yVal": 0.2,
+               "path": "",
+               "text": "47%",
+               "textOffset": [0,0]
+             },
+             {
+               "xVal": "2016-01-01T00:00:00.000Z",
+               "yVal": 0.7,
+               "path": "",
+               "text": "64%",
+               "textOffset": [0,0]
+             },
+             {
+               "xVal": "2016-01-01T00:00:00.000Z",
+               "yVal": 0.20,
+               "path": "",
+               "text": "36%",
+               "textOffset": [0,0]
+             }],
             "wordwrap":[30,20,10],
-            "annoAlign": ["middle","middle","end"],
+            "annoAlign": ["middle","middle","middle","middle"],
             "annotationBullet" : ["An annotation","Another annotation"],
 
             "circles" : false,
@@ -24,15 +52,15 @@
             ],
 
             "yAxisLabel":"%",
-            "yAxisScale":[0,100],
+            "yAxisScale":[0,1],
             "yAxisBreak": false,
             "yAxisBreak_sm_md_lg": [65,65,65]
     },
 
     "optional" : {
-            "margin_sm": [50, 10, 55, 30],
-            "margin_md": [50, 10, 55, 30],
-            "margin_lg": [50, 10, 55, 30],
+            "margin_sm": [50, 10, 55, 40],
+            "margin_md": [50, 10, 55, 40],
+            "margin_lg": [50, 10, 55, 40],
 
             "aspectRatio_sm" : [16,13],
             "aspectRatio_md" : [16,12],
