@@ -68,7 +68,7 @@
 
             "mobileBreakpoint" : 610,
 
-            "xAxisTextFormat_sm_md_lg" : ["%y", "%Y", "%b %y"],
+            "xAxisTextFormat_sm_md_lg" : ["%y", "%Y", "%Y"],
 
             "x_num_ticks_sm_md_lg" : [6,12,12],
             "y_num_ticks_sm_md_lg" : [5,5,5],

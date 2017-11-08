@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="../lib/globalStyle.css" />
 
+
 </head>
 
 
@@ -138,16 +139,10 @@
 			//specify number or ticks on y axis
 			if (parseInt(graphic.style("width")) <= threshold_sm) {
 				yAxis.ticks(dvc.optional.y_num_ticks_sm_md_lg[0])
-
-        yAxis.tickValues(ticks);
 			 } else if (parseInt(graphic.style("width")) <= threshold_md){
 				yAxis.ticks(dvc.optional.y_num_ticks_sm_md_lg[1])
-
-        yAxis.tickValues(ticks);
 			 } else {
 				yAxis.ticks(dvc.optional.y_num_ticks_sm_md_lg[2])
-
-
 			 }
 
 		    //gridlines
@@ -260,7 +255,8 @@
 							})
 				        .call(xAxis);
 
-				 d3.select(".x").select("path").style("stroke", "#666")
+				 d3.select(".x").select("path").style("stroke", "white")
+         d3.selectAll(".x").selectAll(".tick").selectAll("line").style("stroke","white")
 
 				//create icon to symbolise break in y axis if required
 				if(yDomain[0] > 0 && dvc.essential.yAxisBreak == true){

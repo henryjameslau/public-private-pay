@@ -48,9 +48,9 @@
             ],
 
             "yAxisLabel":"%",
-            "yAxisScale":[-0.04,0.2],
-            "yAxisBreak": false,
-            "yAxisBreak_sm_md_lg": [65,65,65]
+            "yAxisScale":[-4,20],
+            "yAxisBreak": true,
+            "yAxisBreak_sm_md_lg": [-4,-4,-4]
     },
 
     "optional" : {
