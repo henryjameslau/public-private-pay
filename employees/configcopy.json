@@ -12,6 +12,44 @@
             "sourceURL":["http://www.ons.gov.uk"],
             "draggable": true,
            "annotationsChart" : [
+              {
+                "xVal": "2013-12-01T00:00:00.000Z",
+                "yVal": 5800,
+                "path": "",
+                "text": "Royal Mail plc moved to private sector",
+                "textOffset": [0,0]
+              },
+
+              {
+                "xVal": "2008-12-01T00:00:00.000Z",
+                "yVal": 6400,
+                "path": "",
+                "text": "Lloyds Banking Group and Royal Bank of Scotland moved to public sector.",
+                "textOffset": [0,0]
+              },
+
+              {
+                "xVal": "2008-09-01T00:00:00.000Z",
+                "yVal": 6200,
+                "path": "",
+                "text": "Housing associations in England reclassified to public sector.",
+                "textOffset": [0,0]
+              },
+              {
+                "xVal": "2014-03-01T00:00:00.000Z",
+                "yVal": 5600,
+                "path": "",
+                "text": "Lloyds Banking Group moved back to the private sector",
+                "textOffset": [0,0]
+              },
+
+              {
+                "xVal": "2012-06-01T00:00:00.000Z",
+                "yVal": 5750,
+                "path": "",
+                "text": "English colleges  moved to  private sector.",
+                "textOffset": [0,0]
+              }
             ],
 
             "wordwrap":[30,20,10],
@@ -31,9 +69,9 @@
     },
 
     "optional" : {
-            "margin_sm": [150, 10, 55, 40],
-            "margin_md": [150, 10, 55, 40],
-            "margin_lg": [150, 10, 55, 40],
+            "margin_sm": [100, 10, 55, 40],
+            "margin_md": [100, 10, 55, 40],
+            "margin_lg": [100, 10, 55, 40],
 
             "aspectRatio_sm" : [16,13],
             "aspectRatio_md" : [16,12],

@@ -31,14 +31,14 @@
    <div id="footer">
    </div>
 
-   		<script src="https://cdn.ons.gov.uk/vendor/d3/4.2.7/d3.min.js" type="text/javascript"></script>
+   		<script src="../lib/d3.v4.min.js" type="text/javascript"></script>
    		<script src="../lib/modernizr.svg.min.js" type="text/javascript"></script>
    		<script src="../lib/pym.js" type="text/javascript"></script>
    		<script src="../lib/d3v4+jetpack.js" type="text/javascript"></script>
-		<script src="../lib/swoopy-drag-d3v4.js" type="text/javascript"></script>
-        <script src="../lib/saveSvgAsPng.js" type="text/javascript"></script>
-        <script src="../lib/footer.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.1.0/d3-annotation.js" type="text/javascript"></script>
+	    <script src="../lib/swoopy-drag-d3v4.js" type="text/javascript"></script>
+      <script src="../lib/saveSvgAsPng.js" type="text/javascript"></script>
+      <script src="../lib/footer.js"></script>
+      <script src="../lib/d3-annotation.js" type="text/javascript"></script>
 
    <script>
 
@@ -344,33 +344,58 @@
 
 //d3 annotation
 
-var annotations = [{
-            note: { label: "Steve Jobs Returns" },
+var annotations = [
+          {
+            note: { label: "Housing associations in England reclassified to public sector.",
+                  "align":"right"},
             subject: {
               y1: margin.top,
-              y2: height - margin.bottom
+              y2: height + margin.top
             },
-            y: margin.top,
-            data: { x: "7/9/2013"} //position the x based on an x scale
+            y: margin.bottom,
+            data: { x: "09/01/2008"}
           },
           {
-            note: { label: "iMac Release" },
+            note: { label: "Lloyds Banking Group and Royal Bank of Scotland moved to public sector.",
+                  "align":"left"},
             subject: {
               y1: margin.top,
-              y2: height - margin.bottom
+              y2: height + margin.top
             },
-            y: margin.top,
-            data: { x: "8/15/2010"}
+            y: margin.bottom,
+            data: { x: "12/01/2008"}
           },
           {
-            note: { label: "iPod Release"},
+            note: { label: "English colleges moved to private sector.",
+                    "align": "right"},
             subject: {
               y1: margin.top,
-              y2: height - margin.bottom
+              y2: height + margin.top
             },
-            y: margin.top,
-            data: { x: "10/23/2009"}
+            y: margin.bottom,
+            data: { x: "06/06/2012"}
+          },
+          {
+                      note: { label: "Royal Mail plc moved to private sector" ,
+                            "align":"right"},
+                      subject: {
+                        y1: margin.top,
+                        y2: height + margin.top
+                      },
+                      y: margin.bottom,
+                      data: { x: "12/01/2013"} //position the x based on an x scale
+          },
+          {
+            note: { label: "Lloyds Banking Group moved back to the private sector.",
+                  "align":"left"},
+            subject: {
+              y1: margin.top,
+              y2: height + margin.top
+            },
+            y: margin.bottom,
+            data: { x: "03/03/2014"}
           }
+
         ]
 
         var type = d3.annotationCustomType(
@@ -378,7 +403,7 @@ var annotations = [{
           {"note":{
               "lineType":"none",
               "orientation": "bottom",
-              "align":"middle"}
+              "align":"left"}
           }
         )
 
@@ -391,7 +416,7 @@ var annotations = [{
               y: function(d){ return y(d.y) }
             })
             .annotations(annotations)
-            .textWrap(30)
+            .textWrap(70)
 
             d3.select("svg")
               .append("g")
