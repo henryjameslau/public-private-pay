@@ -11,7 +11,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
     <link rel="stylesheet" href="../lib/globalStyle.css" />
-
+<style>
+.annotation path{
+  stroke-dasharray: 1,3;
+}
+</style>
 </head>
 
 
@@ -347,56 +351,61 @@
 var annotations = [
           {
             note: { label: "Housing associations in England reclassified to public sector.",
+                  "align":"right",
+                  wrap:130},
+            subject: {
+              y1: margin.top,
+              y2: height + margin.top
+            },
+            y: margin.bottom,
+            data: { x: "01/09/2008"}
+          },
+          {
+            note: { label: "Lloyds Banking Group and Royal Bank of Scotland moved to public sector.",
+                  "align":"left",
+                  wrap:100},
+            subject: {
+              y1: margin.top,
+              y2: height + margin.top
+            },
+            y: margin.bottom,
+            data: { x: "01/12/2008"}
+          },
+          {
+            note: { label: "English colleges moved to private sector.",
+                    "align": "right",
+                    wrap:70},
+            subject: {
+              y1: margin.top,
+              y2: height + margin.top
+            },
+            y: margin.bottom,
+            data: { x: "01/06/2012"}
+          },
+          {
+            note: { label: "Royal Mail plc moved to private sector." ,
                   "align":"right"},
             subject: {
               y1: margin.top,
               y2: height + margin.top
             },
             y: margin.bottom,
-            data: { x: "09/01/2008"}
-          },
-          {
-            note: { label: "Lloyds Banking Group and Royal Bank of Scotland moved to public sector.",
-                  "align":"left"},
-            subject: {
-              y1: margin.top,
-              y2: height + margin.top
-            },
-            y: margin.bottom,
-            data: { x: "12/01/2008"}
-          },
-          {
-            note: { label: "English colleges moved to private sector.",
-                    "align": "right"},
-            subject: {
-              y1: margin.top,
-              y2: height + margin.top
-            },
-            y: margin.bottom,
-            data: { x: "06/06/2012"}
-          },
-          {
-                      note: { label: "Royal Mail plc moved to private sector" ,
-                            "align":"right"},
-                      subject: {
-                        y1: margin.top,
-                        y2: height + margin.top
-                      },
-                      y: margin.bottom,
-                      data: { x: "12/01/2013"} //position the x based on an x scale
+            data: { x: "01/12/2013"} //position the x based on an x scale
           },
           {
             note: { label: "Lloyds Banking Group moved back to the private sector.",
-                  "align":"left"},
+                  "align":"left",
+                  wrap:180},
             subject: {
               y1: margin.top,
               y2: height + margin.top
             },
             y: margin.bottom,
-            data: { x: "03/03/2014"}
+            data: { x: "01/03/2014"}
           }
-
         ]
+
+
 
         var type = d3.annotationCustomType(
           d3.annotationXYThreshold,
@@ -412,17 +421,20 @@ var annotations = [
             .type(type)
             //Gives you access to any data objects in the annotations array
             .accessors({
-              x: function(d){ return x(new Date(d.x))},
+              x: function(d){ return margin.left+x(d3.timeParse(dvc.essential.dateFormat)(d.x))},
               y: function(d){ return y(d.y) }
             })
             .annotations(annotations)
             .textWrap(70)
 
+
+// if bigger than threshold_md then draw the annotations
+ if (parseInt(graphic.style("width")) > threshold_sm) {
             d3.select("svg")
               .append("g")
               .attr("class", "annotation-group")
               .call(makeAnnotations)
-
+}
 
 
 				//create lines
@@ -474,7 +486,7 @@ var annotations = [
 						.attr("text-anchor", "start")
 						.style("font-size", "12px")
 						.style("fill", "#666")
-						.attr('y',height + margin.top + margin.bottom-10)
+						.attr('y',height + margin.top + margin.bottom)
 						.attr('x',0)
 						//.style('margin-bottom', '10px')
 						.text("Source: ")
