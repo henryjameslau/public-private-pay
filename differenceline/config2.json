@@ -4,27 +4,27 @@
 
             "dateFormat":"%d/%m/%Y",
 
-            "legendLabels" : ["Public sector growth", "Private sector growth"],
-            "legendStyle": "line",
-            "colour_palette": [ "#806e71" , "#b1554e"],
+            "legendLabels" : ["Public sector pay growth", "Private sector pay growth","Private sector growth larger than public sector"],
+            "legendStyle": ["line","line","rect"],
+            "colour_palette": [ "#806e71" , "#b1554e","#0075A3"],
 
             "sourceText":["Statistics"],
             "sourceURL":["http://www.ons.gov.uk"],
-            "draggable": true,
+            "draggable": false,
            "annotationsChart" : [
               {
-                "xVal": "2003-06-23T00:00:00.000Z",
-                "yVal": 160,
+                "xVal": "2008-11-23T00:00:00.000Z",
+                "yVal": 2,
                 "path": "",
-                "text": "Lorem ipsum dolor sit amet, consectetur",
+                "text": "Private sector growth falls  after the recession",
                 "textOffset": [0,0]
               },
 
               {
-                "xVal": "1995-06-23T00:00:00.000Z",
-                "yVal": 120,
+                "xVal": "2013-01-23T00:00:00.000Z",
+                "yVal": 4,
                 "path": "",
-                "text": "adipiscing elit, sed do eiusmod",
+                "text": "Private sector growth generally  outpaces public sector",
                 "textOffset": [0,0]
               },
 
@@ -38,7 +38,7 @@
             ],
 
             "wordwrap":[30,20,10],
-            "annoAlign": ["middle","middle","end"],
+            "annoAlign": ["end","middle","end"],
             "annotationBullet" : ["An annotation","Another annotation"],
 
             "circles" : true,

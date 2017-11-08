@@ -18,7 +18,7 @@
     }
 
     .area.below {
-      fill: #d32f2f;
+      fill: none;
       opacity: 0.3;
     }
 
@@ -579,14 +579,14 @@ function createLegend(){
 								.attr("x", 0)
 								.attr("y", 0)
 								.attr("width", function(d){
-									if(dvc.essential.legendStyle=="rect"){
+									if(dvc.essential.legendStyle[i]=="rect"){
 										return 15;
 									} else {
 										return 20;
 									}
 								})
 								.attr("height", function(d){
-									if(dvc.essential.legendStyle=="rect"){
+									if(dvc.essential.legendStyle[i]=="rect"){
 										return 15;
 									} else {
 										return 3;
