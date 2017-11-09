@@ -12,39 +12,14 @@
             "sourceURL":["http://www.ons.gov.uk"],
             "draggable": true,
            "annotationsChart" : [
-              {
-                "xVal": "2003-06-23T00:00:00.000Z",
-                "yVal": 160,
-                "path": "",
-                "text": "T-bone hamburger swine pancetta kielbasa, ribeye boudin bresaola chicken. Flank andouille drumstick kielbasa biltong pancetta",
-                "textOffset": [0,0]
-              },
-
-              {
-                "xVal": "1995-06-23T00:00:00.000Z",
-                "yVal": 120,
-                "path": "",
-                "text": "Flank andouille drumstick kielbasa biltong pancetta",
-                "textOffset": [0,0]
-              },
-
-              {
-                "xVal": "2011-06-01T00:00:00.000Z",
-                "yVal": 60,
-                "path": "",
-                "text": "Versicolor",
-                "textOffset": [0,0]
-              }
             ],
 
             "wordwrap":[30,20,10],
             "annoAlign": ["middle","middle","end"],
-            "annotationBullet" : ["Some other annotation","Some more annotation"],
+            "annotationBullet" : [],
 
             "circles" : false,
             "annotationCXCY":[
-                ["Jan-93","68.4"],
-                ["Jan-08","73"]
             ],
 
             "yAxisLabel":"%",
