@@ -17,21 +17,20 @@
     }
 
     .area.below {
-      fill: #f8a89c;
+      fill: #f69e91;
 
     }
 
     .line {
       fill: none;
-      stroke: #5F7682;
+      stroke: #BBBDBF;
       stroke-width: 3px;
-      stroke-opacity:0.5;
 
     }
 
     .line2 {
       fill: none;
-      stroke: #b1554e;
+      stroke: #36ADD9;
       stroke-width: 3px;
 
     }
@@ -465,15 +464,28 @@
 						.attr("text-anchor", "start")
 						.style("font-size", "12px")
 						.style("fill", "#666")
-						.attr('y',height + margin.top + margin.bottom)
+						.attr('y',height + margin.top + (margin.bottom-4))
 						.attr('x',0)
 						//.style('margin-bottom', '10px')
 						.text("Source: ")
 						.append("a")
-						.style("fill", "#4774CC")  // it ignored the css !!
-						.attr("xlink:href", dvc.essential.sourceURL)
-						.attr("target", "_blank")
-						.text(dvc.essential.sourceText);
+						.attr("xlink:href", dvc.essential.sourceURL[0])
+						.text(dvc.essential.sourceText[0]);
+
+        d3.select('#graphic').select('svg')
+  						.append("g")
+  						.attr("id", "source")
+  						.append("text")
+  						.attr("text-anchor", "start")
+  						.style("font-size", "12px")
+  						.style("fill", "#666")
+  						.attr('y',height + margin.top + (margin.bottom-4))
+  						.attr('x',184)
+  						//.style('margin-bottom', '10px')
+              .text(", ")
+  						.append("a")
+  						.attr("xlink:href", dvc.essential.sourceURL[1])
+  						.text(dvc.essential.sourceText[1]);
 
 
 	function writeAnnotation(){

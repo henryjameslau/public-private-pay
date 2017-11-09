@@ -8,8 +8,8 @@
             "legendStyle": "line",
             "colour_palette": [ "#274796" , "#266D4A"],
 
-            "sourceText":["Statistics"],
-            "sourceURL":["http://www.ons.gov.uk"],
+            "sourceText":["Analysis of factors affecting earnings using Annual Survey of Hours and Earnings, ONS"],
+            "sourceURL":["https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/articles/analysisoffactorsaffectingearningsusingannualsurveyofhoursandearnings/2016"],
             "draggable": true,
            "annotationsChart" : [
               {
@@ -54,9 +54,9 @@
     },
 
     "optional" : {
-            "margin_sm": [50, 10, 70, 40],
-            "margin_md": [50, 10, 70, 40],
-            "margin_lg": [50, 10, 70, 40],
+            "margin_sm": [50, 15, 72, 40],
+            "margin_md": [50, 15, 72, 40],
+            "margin_lg": [50, 15, 72, 40],
 
             "aspectRatio_sm" : [16,13],
             "aspectRatio_md" : [16,12],

@@ -6,10 +6,10 @@
 
             "legendLabels" : ["Public sector pay growth", "Private sector pay growth","Private sector growth larger than public sector"],
             "legendStyle": ["line","line","rect"],
-            "colour_palette": [ "#806e71" , "#b1554e","#0075A3"],
+            "colour_palette": [ "#36ADD9" , "#bedac4","#f69e91"],
 
-            "sourceText":["Statistics"],
-            "sourceURL":["http://www.ons.gov.uk"],
+            "sourceText":["Average Weekly Earnings, ONS"],
+            "sourceURL":["https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/datasets/averageweeklyearningsearn01"],
             "draggable": false,
            "annotationsChart" : [
               {
@@ -26,25 +26,17 @@
                 "path": "",
                 "text": "Private sector growth generally  outpaces public sector",
                 "textOffset": [0,0]
-              },
-
-              {
-                "xVal": "2011-06-01T00:00:00.000Z",
-                "yVal": 60,
-                "path": "",
-                "text": "incididunt ut labore et dolor",
-                "textOffset": [0,0]
               }
             ],
 
             "wordwrap":[30,20,10],
-            "annoAlign": ["end","middle","end"],
-            "annotationBullet" : ["An annotation","Another annotation"],
+            "annoAlign": ["end","start","end"],
+            "annotationBullet" : ["'08 - Private sector growth falls after the recession","'13 - Private sector growth generally outpaces public sector"],
 
             "circles" : true,
             "annotationCXCY":[
-                ["Jan-93","68.4"],
-                ["Jan-08","73"]
+                ["01/01/2008","2"],
+                ["01/01/2013","4"]
             ],
 
             "yAxisLabel":"%",
@@ -54,7 +46,7 @@
     },
 
     "optional" : {
-            "margin_sm": [50, 10, 70, 30],
+            "margin_sm": [80, 10, 70, 30],
             "margin_md": [50, 10, 70, 30],
             "margin_lg": [50, 10, 70, 30],
 

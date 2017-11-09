@@ -8,8 +8,8 @@
             "legendStyle": "line",
             "colour_palette": [ "#234D70" , "#266D4A", "#E2BC22" ],
 
-            "sourceText":["Statistics"],
-            "sourceURL":["http://www.ons.gov.uk"],
+            "sourceText":["Average Weekly Earnings, ONS"],
+            "sourceURL":["https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/datasets/averageweeklyearnings"],
             "draggable": true,
            "annotationsChart" : [
               {
