@@ -625,6 +625,7 @@
   		    .attr("height", height+config2.optional.margin_sm[0]+config2.optional.margin_sm[2])
   		    .attr("width", 50);
 
+
   		newbreaks = breaks;
 
   		var color = d3.scaleThreshold()
@@ -633,7 +634,7 @@
 
   		y = d3.scaleLinear()
   		    .domain([newbreaks[0], breaks[config2.optional.number_breaks]]) /*range for data*/
-  		    .range([height*0.75, 0]); /*range for pixels*/
+  		    .range([height-(config2.optional.margin_sm[0]+10), -config2.optional.margin_sm[2]]); /*range for pixels*/
 
   		keywidth = parseInt(d3.select("#map").style("width"));
 
@@ -653,7 +654,7 @@
   			.tickFormat(d3.format(".0s"));
 
   		var g = svgkey.append("g").attr("id","vert")
-  			.attr("transform", "translate(35,80)");
+  			.attr("transform", "translate(35,"+(config2.optional.margin_sm[2]*2)+")");
 
 
   		g.selectAll("rect")
