@@ -1,6 +1,6 @@
 {
     "essential" : {
-            "graphic_data_url": "datachange2.csv",
+            "graphic_data_url": "data.csv",
 
             "dateFormat":"%d/%m/%Y",
 
