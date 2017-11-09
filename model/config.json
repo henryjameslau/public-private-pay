@@ -4,7 +4,7 @@
 
             "dateFormat":"%Y",
 
-            "legendLabels" : ["Unadjusted difference", "Modelled adjusted difference"],
+            "legendLabels" : ["Difference between average public and private sector pay", "Difference after accounting for worker characteristics"],
             "legendStyle": "line",
             "colour_palette": [ "#274796" , "#266D4A"],
 
