@@ -429,56 +429,56 @@
 			}
 			else {
 
-			annotations = dvc.essential.annotationsChart;
-
-			// For elements with time series
-			for(i=0; i < annotations.length  ;i++) {
-				annotations[i].xVal = new Date(annotations[i].xVal);
-			}
-
-			 var swoopy = d3.swoopyDrag()
-							.x(function(d){ return x(d.xVal) })
-							.y(function(d){ return y(d.yVal) })
-							.draggable(dvc.essential.draggable)
-							.annotations(annotations);
-
-
-			var swoopySel = svg.append('g').attr("class","annotations").call(swoopy); // Expected number, "translate()". error for each annotation
-
-			svg.append('marker')
-				.attr('id', 'arrow')
-				.attr('viewBox', '-10 -10 20 20')
-				.attr('markerWidth', 20)
-				.attr('markerHeight', 20)
-				.attr('orient', 'auto')
-				.append('path')
-				.attr('d', 'M-6.75,-6.75 L 0,0 L -6.75,6.75')
-				.attr('fill','#808080');
-
-			swoopySel.selectAll('path').attr('marker-end', 'url(#arrow)');
-
-
-			d3.selectAll(".annotations path")
-				.style("stroke","#808080")
-				.attr("fill","none");
-
-			swoopySel.selectAll('text')
-				.attr('font-size','13px')
-				.attr('font-size','13px')
-    			.attr("font-size",  "13px")
-    			.attr("font-weight", 500)
-				.each(function(d,i){
-					d3.select(this)
-						.text('')                        //clear existing text
-						.tspans(d3.wordwrap(d.text, dvc.essential.wordwrap[i])) //wrap after xx char
-					});
-
-
-			swoopySel.selectAll('text')
-				.each(function(d,i){
-					d3.select(this).selectAll('tspan')
-					.attr("text-anchor",dvc.essential.annoAlign[i]);
-					});
+			// annotations = dvc.essential.annotationsChart;
+      //
+			// // For elements with time series
+			// for(i=0; i < annotations.length  ;i++) {
+			// 	annotations[i].xVal = new Date(annotations[i].xVal);
+			// }
+      //
+			//  var swoopy = d3.swoopyDrag()
+			// 				.x(function(d){ return x(d.xVal) })
+			// 				.y(function(d){ return y(d.yVal) })
+			// 				.draggable(dvc.essential.draggable)
+			// 				.annotations(annotations);
+      //
+      //
+			// var swoopySel = svg.append('g').attr("class","annotations").call(swoopy); // Expected number, "translate()". error for each annotation
+      //
+			// svg.append('marker')
+			// 	.attr('id', 'arrow')
+			// 	.attr('viewBox', '-10 -10 20 20')
+			// 	.attr('markerWidth', 20)
+			// 	.attr('markerHeight', 20)
+			// 	.attr('orient', 'auto')
+			// 	.append('path')
+			// 	.attr('d', 'M-6.75,-6.75 L 0,0 L -6.75,6.75')
+			// 	.attr('fill','#808080');
+      //
+			// swoopySel.selectAll('path').attr('marker-end', 'url(#arrow)');
+      //
+      //
+			// d3.selectAll(".annotations path")
+			// 	.style("stroke","#808080")
+			// 	.attr("fill","none");
+      //
+			// swoopySel.selectAll('text')
+			// 	.attr('font-size','13px')
+			// 	.attr('font-size','13px')
+    	// 		.attr("font-size",  "13px")
+    	// 		.attr("font-weight", 500)
+			// 	.each(function(d,i){
+			// 		d3.select(this)
+			// 			.text('')                        //clear existing text
+			// 			.tspans(d3.wordwrap(d.text, dvc.essential.wordwrap[i])) //wrap after xx char
+			// 		});
+      //
+      //
+			// swoopySel.selectAll('text')
+			// 	.each(function(d,i){
+			// 		d3.select(this).selectAll('tspan')
+			// 		.attr("text-anchor",dvc.essential.annoAlign[i]);
+			// 		});
 				} // end else ...
 
 			return;
