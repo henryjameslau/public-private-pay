@@ -18,7 +18,7 @@
             "annoAlign": ["middle","middle","end"],
             "annotationBullet" : ["Sep '08 - Housing associations in England reclassified to public sector.",
                                   "Dec '12 - Lloyds Banking Group and Royal Bank of Scotland moved to public sector.",
-                                  "Jun '12 - English colleges moved to private sector.",
+                                  "Jun '12 - 6th form & FE moved to private sector.",
                                   "Dec '13 - Royal Mail plc moved to private sector.",
                                   "Mar '14 - Lloyds Banking Group moved back to the private sector."
                                 ],
@@ -44,7 +44,7 @@
             "margin_lg": [70, 10, 70, 40],
 
             "aspectRatio_sm" : [16,13],
-            "aspectRatio_md" : [16,10],
+            "aspectRatio_md" : [16,12],
             "aspectRatio_lg" : [16,10],
 
             "mobileBreakpoint" : 610,
